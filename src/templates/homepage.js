@@ -2,7 +2,7 @@ import * as React from "react";
 import { Layout } from "../components/Layout";
 import { StaticImage } from "gatsby-plugin-image";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Box, Link, Typography, useTheme } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 
 export const DevImage = () => {
   return (
@@ -101,6 +101,10 @@ const Homepage = () => {
       setTouchPos(null);
     }
   };
+
+  if (!isMobile) {
+    return null;
+  }
 
   return (
     <Layout>
