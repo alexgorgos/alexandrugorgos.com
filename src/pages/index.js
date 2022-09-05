@@ -98,25 +98,14 @@ const IndexPage = () => {
         className="header"
         onMouseOver={(e) => handleHover(e)}
       >
-        {isMobile ? (
-          <Typography
-            variant="h3"
-            component="h1"
-            fontFamily="Playfair Display, serif"
-            className="header"
-          >
-            Alexandru Gorgos
-          </Typography>
-        ) : (
-          <Typography
-            variant="h1"
-            component="h1"
-            fontFamily="Playfair Display, serif"
-            className="header"
-          >
-            Alexandru Gorgos
-          </Typography>
-        )}
+        <Typography
+          variant={isMobile ? "h3" : "h1"}
+          component="h1"
+          fontFamily="Playfair Display, serif"
+          className="header"
+        >
+          Alexandru Gorgos
+        </Typography>
       </Box>
       <Grid
         container
@@ -153,7 +142,9 @@ const IndexPage = () => {
                 position: "absolute",
                 top: "50%",
                 right: 0,
-                transform: "translate(100%, 50%)",
+                transform: isMobile
+                  ? "translate(100%, -150%)"
+                  : "translate(100%, 50%)",
                 backgroundColor: "#000",
                 p: 5,
                 my: 5,
@@ -166,7 +157,7 @@ const IndexPage = () => {
               <Typography
                 fontFamily={"Poppins, sans-serif"}
                 className="photo"
-                variant={isMobile ? "h1" : "body1"}
+                variant={isMobile ? "body2" : "body1"}
               >
                 The photographer
               </Typography>
@@ -176,7 +167,9 @@ const IndexPage = () => {
                 position: "absolute",
                 top: "50%",
                 right: 0,
-                transform: "translate(100%, 150%)",
+                transform: isMobile
+                  ? "translate(100%, 0)"
+                  : "translate(100%, 150%)",
                 backgroundColor: "#000",
                 p: 5,
                 my: 5,
@@ -230,14 +223,13 @@ const IndexPage = () => {
                 position: "absolute",
                 top: "50%",
                 left: 0,
-                transform: {
-                  xs: "translate(0, -100%)",
-                  md: "translate(-100%, 50%)",
-                },
+                transform: isMobile
+                  ? "translate(-100%, -150%)"
+                  : "translate(-100%, 50%)",
                 backgroundColor: "#000",
                 p: 5,
                 my: 5,
-                transition: { xs: "none", md: "transform 1s" },
+                transition: "transform 1s",
               }}
               className="dev"
               id="dev-title"
@@ -256,10 +248,9 @@ const IndexPage = () => {
                 position: "absolute",
                 top: "50%",
                 left: 0,
-                transform: {
-                  xs: "translate(0, 25%)",
-                  md: "translate(-100%, 150%)",
-                },
+                transform: isMobile
+                  ? "translate(-100%, 0)"
+                  : "translate(-100%, 150%)",
                 backgroundColor: "#000",
                 p: 5,
                 my: 5,
@@ -267,7 +258,7 @@ const IndexPage = () => {
                 whiteSpace: "nowrap",
                 textAlign: "left",
                 overflow: "hidden",
-                transition: { xs: "none", md: "transform 1s" },
+                transition: "transform 1s",
               }}
               className="dev"
               id="dev-info"

@@ -44,10 +44,10 @@ img {
 
 .active #dev-title,
 .active #photo-title {
-  transform: translate(0, 50%);
+  transform: translate(0, -150%);
 }
 
 .active #dev-info,
 .active #photo-info {
-  transform: translate(0, 150%);
+  transform: translate(0, 0);
 }
