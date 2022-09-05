@@ -40,30 +40,29 @@ const IndexPage = () => {
   const [hovered, setHovered] = React.useState("");
   const [touchPos, setTouchPos] = React.useState(null);
   const [active, setActive] = React.useState("photo");
+  const [isMobile, setMobile] = React.useState(false);
 
-  const isMobile = React.useRef(
-    (() => {
-      const toMatch = [
-        /Android/i,
-        /webOS/i,
-        /iPhone/i,
-        /iPad/i,
-        /iPod/i,
-        /BlackBerry/i,
-        /Windows Phone/i,
-      ];
+  React.useEffect(() => {
+    const toMatch = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i,
+    ];
 
-      return toMatch.some((toMatchItem) => {
-        return (
-          typeof window !== `undefined` &&
-          navigator.userAgent.match(toMatchItem)
-        );
-      });
-    })()
-  );
+    const userAgent =
+      typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+
+    const mobile = Boolean(userAgent.match(toMatch));
+
+    setMobile(mobile);
+  }, []);
 
   const handleHover = (e) => {
-    if (!isMobile.current) {
+    if (!isMobile) {
       const getClass = e.target.className;
       /dev/.test(getClass) && setHovered("dev");
       /photo/.test(getClass) && setHovered("photo");
@@ -119,7 +118,7 @@ const IndexPage = () => {
         onMouseOver={(e) => handleHover(e)}
       >
         <Typography
-          variant={isMobile.current ? "h3" : "h1"}
+          variant={isMobile ? "h3" : "h1"}
           component="h1"
           fontFamily="Playfair Display, serif"
           className="header"
@@ -175,7 +174,7 @@ const IndexPage = () => {
               <Typography
                 fontFamily={"Poppins, sans-serif"}
                 className="photo"
-                variant={isMobile.current ? "body2" : "body1"}
+                variant={isMobile ? "body2" : "body1"}
               >
                 The photographer
               </Typography>
@@ -201,14 +200,14 @@ const IndexPage = () => {
               <Typography
                 fontFamily={"Poppins, sans-serif"}
                 className="photo"
-                variant={isMobile.current ? "body2" : "body1"}
+                variant={isMobile ? "body2" : "body1"}
               >
                 Candid photography lover
               </Typography>
               <Typography
                 fontFamily={"Poppins, sans-serif"}
                 className="photo"
-                variant={isMobile.current ? "body2" : "body1"}
+                variant={isMobile ? "body2" : "body1"}
               >
                 Passionate world observer with a camera
               </Typography>
@@ -255,7 +254,7 @@ const IndexPage = () => {
                 color="white"
                 className="dev"
                 fontFamily={"Source Code Pro, monospace"}
-                variant={isMobile.current ? "body2" : "body1"}
+                variant={isMobile ? "body2" : "body1"}
               >
                 The developer
               </Typography>
@@ -284,14 +283,14 @@ const IndexPage = () => {
               <Typography
                 className="dev"
                 fontFamily={"Source Code Pro, monospace"}
-                variant={isMobile.current ? "body2" : "body1"}
+                variant={isMobile ? "body2" : "body1"}
               >
                 JAMstack enthusiast
               </Typography>
               <Typography
                 className="dev"
                 fontFamily={"Source Code Pro, monospace"}
-                variant={isMobile.current ? "body2" : "body1"}
+                variant={isMobile ? "body2" : "body1"}
               >
                 Robust problem solver and idea generator
               </Typography>
