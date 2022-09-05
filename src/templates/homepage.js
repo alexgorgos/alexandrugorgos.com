@@ -39,7 +39,7 @@ export const PhotoImage = () => {
 const Homepage = () => {
   const [hovered, setHovered] = React.useState("");
   const [touchPos, setTouchPos] = React.useState(null);
-  const [active, setActive] = React.useState("photo");
+  const [active, setActive] = React.useState("");
 
   const isMobile = React.useRef(
     (() => {
@@ -72,6 +72,12 @@ const Homepage = () => {
     }
   };
 
+  React.useEffect(() => {
+    if (isMobile.current && !active) {
+      setActive("photo");
+    }
+  });
+
   const handleSwipeStart = (e) => {
     if (isMobile.current) {
       const touchDown = e.touches[0].clientX;
@@ -101,10 +107,6 @@ const Homepage = () => {
       setTouchPos(null);
     }
   };
-
-  if (!isMobile) {
-    return null;
-  }
 
   return (
     <Layout>
@@ -146,6 +148,7 @@ const Homepage = () => {
           width: "100%",
           height: "100%",
           flexDirection: "column",
+          backgroundColor: "black",
         }}
         onTouchStart={handleSwipeStart}
         onTouchMove={handleSwipeMove}
