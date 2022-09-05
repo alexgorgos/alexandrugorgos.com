@@ -119,7 +119,7 @@ const IndexPage = () => {
         onMouseOver={(e) => handleHover(e)}
       >
         <Typography
-          variant={isMobile.current ? "h2" : "h1"}
+          variant={isMobile.current ? "h3" : "h1"}
           component="h1"
           fontFamily="Playfair Display, serif"
           className="header"
@@ -162,15 +162,12 @@ const IndexPage = () => {
                 position: "absolute",
                 top: "50%",
                 right: 0,
-                transform: {
-                  xs: "translate(0, -100%)",
-                  md: "translate(100%, 50%)",
-                },
+                transform: "translate(100%, 50%)",
                 backgroundColor: "#000",
                 p: 5,
                 my: 5,
                 color: "white",
-                transition: { xs: "none", md: "transform 1s" },
+                transition: "transform 1s",
               }}
               className="photo"
               id="photo-title"
@@ -188,10 +185,7 @@ const IndexPage = () => {
                 position: "absolute",
                 top: "50%",
                 right: 0,
-                transform: {
-                  xs: "translate(0, 25%)",
-                  md: "translate(100%, 150%)",
-                },
+                transform: "translate(100%, 150%)",
                 backgroundColor: "#000",
                 p: 5,
                 my: 5,
@@ -199,7 +193,7 @@ const IndexPage = () => {
                 whiteSpace: "nowrap",
                 textAlign: "right",
                 overflow: "hidden",
-                transition: { xs: "none", md: "transform 1s" },
+                transition: "transform 1s",
               }}
               className="photo"
               id="photo-info"

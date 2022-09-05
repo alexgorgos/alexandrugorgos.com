@@ -41,3 +41,13 @@ img {
 .inactive.photo {
   transform: translate(-100%, 0);
 }
+
+.active #dev-title,
+.active #photo-title {
+  transform: translate(0, 50%);
+}
+
+.active #dev-info,
+.active #photo-info {
+  transform: translate(0, 150%);
+}
