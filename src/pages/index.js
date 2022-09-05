@@ -58,7 +58,7 @@ const IndexPage = () => {
   );
 
   const handleHover = (e) => {
-    if (!isMobile) {
+    if (!isMobile.current) {
       const getClass = e.target.className;
       /dev/.test(getClass) && setHovered("dev");
       /photo/.test(getClass) && setHovered("photo");
