@@ -52,30 +52,34 @@ const IndexPage = () => {
   };
 
   const handleSwipeStart = (e) => {
-    const touchDown = e.touches[0].clientX;
-    setTouchPos(touchDown);
+    if (isMobile) {
+      const touchDown = e.touches[0].clientX;
+      setTouchPos(touchDown);
+    }
   };
 
   const handleSwipeMove = (e) => {
-    const getClass = e.target.className;
-    const touchDown = touchPos;
-    if (touchDown === null) {
-      return null;
+    if (isMobile) {
+      const getClass = e.target.className;
+      const touchDown = touchPos;
+      if (touchDown === null) {
+        return null;
+      }
+
+      const currentTouch = e.touches[0].clientX;
+      const diff = touchDown - currentTouch;
+      console.log(diff);
+
+      if (diff > 5) {
+        /photo/.test(getClass) && setActive("dev");
+      }
+
+      if (diff < -5) {
+        /dev/.test(getClass) && setActive("photo");
+      }
+
+      setTouchPos(null);
     }
-
-    const currentTouch = e.touches[0].clientX;
-    const diff = touchDown - currentTouch;
-    console.log(diff);
-
-    if (diff > 5) {
-      /photo/.test(getClass) && setActive("dev");
-    }
-
-    if (diff < -5) {
-      /dev/.test(getClass) && setActive("photo");
-    }
-
-    setTouchPos(null);
   };
 
   return (
@@ -98,14 +102,25 @@ const IndexPage = () => {
         className="header"
         onMouseOver={(e) => handleHover(e)}
       >
-        <Typography
-          variant={isMobile ? "h3" : "h1"}
-          component="h1"
-          fontFamily="Playfair Display, serif"
-          className="header"
-        >
-          Alexandru Gorgos
-        </Typography>
+        {isMobile ? (
+          <Typography
+            variant="h3"
+            component="h1"
+            fontFamily="Playfair Display, serif"
+            className="header"
+          >
+            Alexandru Gorgos
+          </Typography>
+        ) : (
+          <Typography
+            variant="h1"
+            component="h1"
+            fontFamily="Playfair Display, serif"
+            className="header"
+          >
+            Alexandru Gorgos
+          </Typography>
+        )}
       </Box>
       <Grid
         container
@@ -137,66 +152,124 @@ const IndexPage = () => {
             onMouseOver={(e) => handleHover(e)}
           >
             <PhotoImage />
-            <Box
-              sx={{
-                position: "absolute",
-                top: "50%",
-                right: 0,
-                transform: isMobile
-                  ? "translate(100%, -150%)"
-                  : "translate(100%, 50%)",
-                backgroundColor: "#000",
-                p: 5,
-                my: 5,
-                color: "white",
-                transition: "transform 1s",
-              }}
-              className="photo"
-              id="photo-title"
-            >
-              <Typography
-                fontFamily={"Poppins, sans-serif"}
+            {isMobile ? (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  right: 0,
+                  transform: "translate(100%, -150%)",
+                  backgroundColor: "#000",
+                  p: 5,
+                  my: 5,
+                  color: "white",
+                  transition: "transform 1s",
+                }}
                 className="photo"
-                variant={isMobile ? "body2" : "body1"}
+                id="photo-title"
               >
-                The photographer
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                position: "absolute",
-                top: "50%",
-                right: 0,
-                transform: isMobile
-                  ? "translate(100%, 0)"
-                  : "translate(100%, 150%)",
-                backgroundColor: "#000",
-                p: 5,
-                my: 5,
-                color: "white",
-                whiteSpace: "nowrap",
-                textAlign: "right",
-                overflow: "hidden",
-                transition: "transform 1s",
-              }}
-              className="photo"
-              id="photo-info"
-            >
-              <Typography
-                fontFamily={"Poppins, sans-serif"}
+                <Typography
+                  fontFamily={"Poppins, sans-serif"}
+                  className="photo"
+                  variant="body2"
+                >
+                  The photographer
+                </Typography>
+              </Box>
+            ) : (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  right: 0,
+                  transform: "translate(100%, 50%)",
+                  backgroundColor: "#000",
+                  p: 5,
+                  my: 5,
+                  color: "white",
+                  transition: "transform 1s",
+                }}
                 className="photo"
-                sx={{ fontVariant: { xs: "h1", md: "body1" } }}
+                id="photo-title"
               >
-                Candid photography lover
-              </Typography>
-              <Typography
-                fontFamily={"Poppins, sans-serif"}
+                <Typography
+                  fontFamily={"Poppins, sans-serif"}
+                  className="photo"
+                  variant={"body1"}
+                >
+                  The photographer
+                </Typography>
+              </Box>
+            )}
+            {isMobile ? (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  right: 0,
+                  transform: "translate(100%, 0)",
+                  backgroundColor: "#000",
+                  p: 5,
+                  my: 5,
+                  color: "white",
+                  whiteSpace: "nowrap",
+                  textAlign: "right",
+                  overflow: "hidden",
+                  transition: "transform 1s",
+                }}
                 className="photo"
-                variant={isMobile ? "body2" : "body1"}
+                id="photo-info"
               >
-                Passionate world observer with a camera
-              </Typography>
-            </Box>
+                <Typography
+                  fontFamily={"Poppins, sans-serif"}
+                  className="photo"
+                  variant="body2"
+                >
+                  Candid photography lover
+                </Typography>
+                <Typography
+                  fontFamily={"Poppins, sans-serif"}
+                  className="photo"
+                  variant="body2"
+                >
+                  Passionate world observer with a camera
+                </Typography>
+              </Box>
+            ) : (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  right: 0,
+                  transform: "translate(100%, 150%)",
+                  backgroundColor: "#000",
+                  p: 5,
+                  my: 5,
+                  color: "white",
+                  whiteSpace: "nowrap",
+                  textAlign: "right",
+                  overflow: "hidden",
+                  transition: "transform 1s",
+                }}
+                className="photo"
+                id="photo-info"
+              >
+                <Typography
+                  fontFamily={"Poppins, sans-serif"}
+                  className="photo"
+                  variant="body1"
+                >
+                  Candid photography lover
+                </Typography>
+                <Typography
+                  fontFamily={"Poppins, sans-serif"}
+                  className="photo"
+                  variant="body1"
+                >
+                  Passionate world observer with a camera
+                </Typography>
+              </Box>
+            )}
           </Link>
         </Grid>
         <Grid
@@ -218,66 +291,126 @@ const IndexPage = () => {
             onMouseOver={(e) => handleHover(e)}
           >
             <DevImage />
-            <Box
-              sx={{
-                position: "absolute",
-                top: "50%",
-                left: 0,
-                transform: isMobile
-                  ? "translate(-100%, -150%)"
-                  : "translate(-100%, 50%)",
-                backgroundColor: "#000",
-                p: 5,
-                my: 5,
-                transition: "transform 1s",
-              }}
-              className="dev"
-              id="dev-title"
-            >
-              <Typography
-                color="white"
+
+            {isMobile ? (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: 0,
+                  transform: "translate(-100%, -150%)",
+                  backgroundColor: "#000",
+                  p: 5,
+                  my: 5,
+                  transition: "transform 1s",
+                }}
                 className="dev"
-                fontFamily={"Source Code Pro, monospace"}
-                variant={isMobile ? "body2" : "body1"}
+                id="dev-title"
               >
-                The developer
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                position: "absolute",
-                top: "50%",
-                left: 0,
-                transform: isMobile
-                  ? "translate(-100%, 0)"
-                  : "translate(-100%, 150%)",
-                backgroundColor: "#000",
-                p: 5,
-                my: 5,
-                color: "white",
-                whiteSpace: "nowrap",
-                textAlign: "left",
-                overflow: "hidden",
-                transition: "transform 1s",
-              }}
-              className="dev"
-              id="dev-info"
-            >
-              <Typography
+                <Typography
+                  color="white"
+                  className="dev"
+                  fontFamily={"Source Code Pro, monospace"}
+                  variant="body2"
+                >
+                  The developer
+                </Typography>
+              </Box>
+            ) : (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: 0,
+                  transform: "translate(-100%, 50%)",
+                  backgroundColor: "#000",
+                  p: 5,
+                  my: 5,
+                  transition: "transform 1s",
+                }}
                 className="dev"
-                fontFamily={"Source Code Pro, monospace"}
-                variant={isMobile ? "body2" : "body1"}
+                id="dev-title"
               >
-                JAMstack enthusiast
-              </Typography>
-              <Typography
+                <Typography
+                  color="white"
+                  className="dev"
+                  fontFamily={"Source Code Pro, monospace"}
+                  variant="body1"
+                >
+                  The developer
+                </Typography>
+              </Box>
+            )}
+
+            {isMobile ? (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: 0,
+                  transform: "translate(-100%, 0)",
+                  backgroundColor: "#000",
+                  p: 5,
+                  my: 5,
+                  color: "white",
+                  whiteSpace: "nowrap",
+                  textAlign: "left",
+                  overflow: "hidden",
+                  transition: "transform 1s",
+                }}
                 className="dev"
-                fontFamily={"Source Code Pro, monospace"}
-                variant={isMobile ? "body2" : "body1"}
+                id="dev-info"
               >
-                Robust problem solver and idea generator
-              </Typography>
-            </Box>
+                <Typography
+                  className="dev"
+                  fontFamily={"Source Code Pro, monospace"}
+                  variant="body2"
+                >
+                  JAMstack enthusiast
+                </Typography>
+                <Typography
+                  className="dev"
+                  fontFamily={"Source Code Pro, monospace"}
+                  variant="body2"
+                >
+                  Robust problem solver and idea generator
+                </Typography>
+              </Box>
+            ) : (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: 0,
+                  transform: "translate(-100%, 150%)",
+                  backgroundColor: "#000",
+                  p: 5,
+                  my: 5,
+                  color: "white",
+                  whiteSpace: "nowrap",
+                  textAlign: "left",
+                  overflow: "hidden",
+                  transition: "transform 1s",
+                }}
+                className="dev"
+                id="dev-info"
+              >
+                <Typography
+                  className="dev"
+                  fontFamily={"Source Code Pro, monospace"}
+                  variant="body1"
+                >
+                  JAMstack enthusiast
+                </Typography>
+                <Typography
+                  className="dev"
+                  fontFamily={"Source Code Pro, monospace"}
+                  variant="body1"
+                >
+                  Robust problem solver and idea generator
+                </Typography>
+              </Box>
+            )}
           </Link>
         </Grid>
       </Grid>
