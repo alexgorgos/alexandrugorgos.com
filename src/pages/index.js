@@ -112,7 +112,7 @@ const IndexPage = () => {
           px: 5,
           zIndex: "1201",
           whiteSpace: "nowrap",
-          width: "100%",
+          width: { xs: "100%", md: "auto" },
           height: "fit-content",
         }}
         className="header"
