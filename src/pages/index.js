@@ -40,29 +40,27 @@ const IndexPage = () => {
   const [hovered, setHovered] = React.useState("");
   const [touchPos, setTouchPos] = React.useState(null);
   const [active, setActive] = React.useState("photo");
-  const [isMobile, setMobile] = React.useState("");
 
-  React.useEffect(() => {
-    const toMatch = [
-      /Android/i,
-      /webOS/i,
-      /iPhone/i,
-      /iPad/i,
-      /iPod/i,
-      /BlackBerry/i,
-      /Windows Phone/i,
-    ];
+  const isMobile = React.useRef(
+    (() => {
+      const toMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i,
+      ];
 
-    const userAgent =
-      typeof window.navigator === "undefined" ? "" : navigator.userAgent;
-
-    const mobile = Boolean(userAgent.match(toMatch));
-
-    setMobile(mobile);
-  }, []);
+      return toMatch.some((toMatchItem) => {
+        return navigator.userAgent.match(toMatchItem);
+      });
+    })()
+  );
 
   const handleHover = (e) => {
-    if (!isMobile) {
+    if (!isMobile.current) {
       const getClass = e.target.className;
       /dev/.test(getClass) && setHovered("dev");
       /photo/.test(getClass) && setHovered("photo");
@@ -71,14 +69,14 @@ const IndexPage = () => {
   };
 
   const handleSwipeStart = (e) => {
-    if (isMobile) {
+    if (isMobile.current) {
       const touchDown = e.touches[0].clientX;
       setTouchPos(touchDown);
     }
   };
 
   const handleSwipeMove = (e) => {
-    if (isMobile) {
+    if (isMobile.current) {
       const getClass = e.target.className;
       const touchDown = touchPos;
       if (touchDown === null) {
@@ -121,7 +119,7 @@ const IndexPage = () => {
         className="header"
         onMouseOver={(e) => handleHover(e)}
       >
-        {isMobile ? (
+        {isMobile.current ? (
           <Typography
             variant="h3"
             component="h1"
@@ -171,7 +169,7 @@ const IndexPage = () => {
             onMouseOver={(e) => handleHover(e)}
           >
             <PhotoImage />
-            {isMobile ? (
+            {isMobile.current ? (
               <Box
                 sx={{
                   position: "absolute",
@@ -220,7 +218,7 @@ const IndexPage = () => {
                 </Typography>
               </Box>
             )}
-            {isMobile ? (
+            {isMobile.current ? (
               <Box
                 sx={{
                   position: "absolute",
@@ -311,7 +309,7 @@ const IndexPage = () => {
           >
             <DevImage />
 
-            {isMobile ? (
+            {isMobile.current ? (
               <Box
                 sx={{
                   position: "absolute",
@@ -361,7 +359,7 @@ const IndexPage = () => {
               </Box>
             )}
 
-            {isMobile ? (
+            {isMobile.current ? (
               <Box
                 sx={{
                   position: "absolute",
