@@ -12,6 +12,9 @@ import "@fontsource/source-code-pro";
 import "@fontsource/playfair-display";
 
 const darkTheme = createTheme({
+  typography: {
+    h1: { fontSize: "5rem" },
+  },
   palette: {
     mode: "dark",
   },
