@@ -3,7 +3,6 @@ import { Layout } from "../components/Layout";
 import { StaticImage } from "gatsby-plugin-image";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Box, Link, Typography } from "@mui/material";
-import { isMobile } from "react-device-detect";
 
 export const DevImage = () => {
   return (
@@ -41,6 +40,26 @@ const IndexPage = () => {
   const [hovered, setHovered] = React.useState("");
   const [touchPos, setTouchPos] = React.useState(null);
   const [active, setActive] = React.useState("photo");
+  const [isMobile, setMobile] = React.useState("");
+
+  React.useEffect(() => {
+    const toMatch = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i,
+    ];
+
+    const userAgent =
+      typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+
+    const mobile = Boolean(userAgent.match(toMatch));
+
+    setMobile(mobile);
+  }, []);
 
   const handleHover = (e) => {
     if (!isMobile) {
@@ -104,7 +123,7 @@ const IndexPage = () => {
       >
         {isMobile ? (
           <Typography
-            variant="h1"
+            variant="h3"
             component="h1"
             fontFamily="Playfair Display, serif"
             className="header"
