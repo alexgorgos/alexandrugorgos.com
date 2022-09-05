@@ -18,6 +18,10 @@ img {
   filter: grayscale(100%);
 }
 
+h1.header {
+  font-family: "Playfair Display, serif";
+}
+
 .hovered img {
   filter: grayscale(0);
 }
