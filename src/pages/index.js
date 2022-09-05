@@ -39,11 +39,26 @@ export const PhotoImage = () => {
 const IndexPage = () => {
   const [hovered, setHovered] = React.useState("");
 
-  const theme = useTheme();
-  const onlyBigScreens = theme.breakpoints.up("md");
+  const isMobile = React.useRef(
+    (() => {
+      const toMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i,
+      ];
+
+      return toMatch.some((toMatchItem) => {
+        return navigator.userAgent.match(toMatchItem);
+      });
+    })()
+  );
 
   const handleHover = (e) => {
-    if (onlyBigScreens) {
+    if (!isMobile) {
       const getClass = e.target.className;
       /dev/.test(getClass) && setHovered("dev");
       /photo/.test(getClass) && setHovered("photo");
@@ -70,7 +85,7 @@ const IndexPage = () => {
         onMouseOver={(e) => handleHover(e)}
       >
         <Typography
-          variant="h1"
+          variant={{ xs: "h2", md: "h1" }}
           component="h1"
           className="header"
           fontFamily={"Playfair Display, serif"}
@@ -123,6 +138,7 @@ const IndexPage = () => {
                 fontFamily={"Poppins, sans-serif"}
                 letterSpacing={1.2}
                 className="photo"
+                variant="subtitle1"
               >
                 The photographer
               </Typography>
@@ -152,6 +168,7 @@ const IndexPage = () => {
                 fontFamily={"Poppins, sans-serif"}
                 letterSpacing={1.2}
                 className="photo"
+                variant="subtitle1"
               >
                 Candid photography lover
               </Typography>
@@ -159,6 +176,7 @@ const IndexPage = () => {
                 fontFamily={"Poppins, sans-serif"}
                 letterSpacing={1.2}
                 className="photo"
+                variant="subtitle1"
               >
                 Passionate world observer with a camera
               </Typography>
@@ -204,6 +222,7 @@ const IndexPage = () => {
                 className="dev"
                 fontFamily={"Source Code Pro, monospace"}
                 letterSpacing={1.2}
+                variant="subtitle1"
               >
                 The developer
               </Typography>
@@ -233,6 +252,7 @@ const IndexPage = () => {
                 className="dev"
                 fontFamily={"Source Code Pro, monospace"}
                 letterSpacing={1.2}
+                variant="subtitle1"
               >
                 JAMstack enthusiast
               </Typography>
@@ -240,6 +260,7 @@ const IndexPage = () => {
                 className="dev"
                 fontFamily={"Source Code Pro, monospace"}
                 letterSpacing={1.2}
+                variant="subtitle1"
               >
                 Robust problem solver and idea generator
               </Typography>
