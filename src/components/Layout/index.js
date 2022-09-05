@@ -17,9 +17,11 @@ const darkTheme = createTheme({
   },
 });
 
+const theme = responsiveFontSizes(darkTheme);
+
 export const Layout = ({ children }) => {
   return (
-    <ThemeProvider theme={responsiveFontSizes(darkTheme)}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box
         sx={{
