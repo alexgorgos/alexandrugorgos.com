@@ -2,7 +2,7 @@ import * as React from "react";
 import { Layout } from "../components/Layout";
 import { StaticImage } from "gatsby-plugin-image";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Box, Link, Typography, useTheme } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 
 export const DevImage = () => {
   return (
@@ -40,7 +40,7 @@ const IndexPage = () => {
   const [hovered, setHovered] = React.useState("");
   const [touchPos, setTouchPos] = React.useState(null);
   const [active, setActive] = React.useState("photo");
-  const [isMobile, setMobile] = React.useState(false);
+  const [isMobile, setMobile] = React.useState("");
 
   React.useEffect(() => {
     const toMatch = [
@@ -174,7 +174,7 @@ const IndexPage = () => {
               <Typography
                 fontFamily={"Poppins, sans-serif"}
                 className="photo"
-                variant={isMobile ? "body2" : "body1"}
+                variant={isMobile ? "h1" : "body1"}
               >
                 The photographer
               </Typography>
