@@ -198,7 +198,7 @@ const IndexPage = () => {
           }}
         >
           <Link
-            href="https://dev.alexandrugorgos.com"
+            href="https://www.linkedin.com/in/alexandru-gorgos/"
             className={hovered === "dev" ? "hovered" : ""}
             onMouseOver={(e) => handleHover(e)}
           >
