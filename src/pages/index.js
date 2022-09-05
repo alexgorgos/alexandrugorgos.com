@@ -123,25 +123,14 @@ const IndexPage = () => {
         className="header"
         onMouseOver={(e) => handleHover(e)}
       >
-        {isMobile.current ? (
-          <Typography
-            variant="h3"
-            component="h1"
-            fontFamily="Playfair Display, serif"
-            className="header"
-          >
-            Alexandru Gorgos
-          </Typography>
-        ) : (
-          <Typography
-            variant="h1"
-            component="h1"
-            fontFamily="Playfair Display, serif"
-            className="header"
-          >
-            Alexandru Gorgos
-          </Typography>
-        )}
+        <Typography
+          variant={isMobile.current ? "h3" : "h1"}
+          component="h1"
+          fontFamily="Playfair Display, serif"
+          className="header"
+        >
+          Alexandru Gorgos
+        </Typography>
       </Box>
       <Grid
         container
