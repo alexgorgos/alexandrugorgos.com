@@ -1,0 +1,31 @@
+html,
+body {
+  height: 100%;
+}
+
+body,
+#___gatsby,
+#___gatsby > div,
+#___gatsby > div > div {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  filter: grayscale(100%);
+}
+
+.hovered img {
+  filter: grayscale(0);
+}
+
+.hovered #dev-info,
+.hovered #photo-info {
+  transform: translate(0, 150%);
+}
+
+.hovered #dev-title,
+.hovered #photo-title {
+  transform: translate(0, 50%);
+}
