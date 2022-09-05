@@ -117,14 +117,25 @@ const IndexPage = () => {
         className="header"
         onMouseOver={(e) => handleHover(e)}
       >
-        <Typography
-          variant={isMobile ? "h3" : "h1"}
-          component="h1"
-          fontFamily="Playfair Display, serif"
-          className="header"
-        >
-          Alexandru Gorgos
-        </Typography>
+        {isMobile ? (
+          <Typography
+            variant="h3"
+            component="h1"
+            fontFamily="Playfair Display, serif"
+            className="header"
+          >
+            Alexandru Gorgos
+          </Typography>
+        ) : (
+          <Typography
+            variant="h1"
+            component="h1"
+            fontFamily="Playfair Display, serif"
+            className="header"
+          >
+            Alexandru Gorgos
+          </Typography>
+        )}
       </Box>
       <Grid
         container
@@ -200,7 +211,7 @@ const IndexPage = () => {
               <Typography
                 fontFamily={"Poppins, sans-serif"}
                 className="photo"
-                variant={isMobile ? "body2" : "body1"}
+                sx={{ fontVariant: { xs: "h1", md: "body1" } }}
               >
                 Candid photography lover
               </Typography>
