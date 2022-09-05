@@ -36,6 +36,17 @@ h1.header {
   transform: translate(0, 50%);
 }
 
+.active.photo img,
+.active.dev img {
+  filter: grayscale(0);
+  transition: filter 1s linear 1s, -webkit-filter 1s linear 1s;
+  -webkit-transition: -webkit-filter 1s linear 1s;
+  -o-transition: -o-filter 1s linear 1s;
+  -ms-transition: -ms-filter 1s linear 1s;
+  -moz-transition: -moz-filter 1s linear 1s;
+  -moz-transition: filter 1s linear 1s;
+}
+
 .active.photo,
 .inactive.dev {
   transform: translate(0, 0);

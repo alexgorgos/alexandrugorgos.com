@@ -248,7 +248,10 @@ const Homepage = () => {
             borderLeft: { md: "1px solid white" },
             overflow: "hidden",
             height: "100%",
-            transition: { xs: "transform 1s", md: "none" },
+            transition: {
+              xs: "transform 1s",
+              md: "none",
+            },
           }}
           className={
             "dev " +
