@@ -31,3 +31,13 @@ img {
 .hovered #photo-title {
   transform: translate(0, 50%);
 }
+
+.active.photo,
+.inactive.dev {
+  transform: translate(0, 0);
+}
+
+.active.dev,
+.inactive.photo {
+  transform: translate(-100%, 0);
+}

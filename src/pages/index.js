@@ -38,6 +38,8 @@ export const PhotoImage = () => {
 
 const IndexPage = () => {
   const [hovered, setHovered] = React.useState("");
+  const [touchPos, setTouchPos] = React.useState(null);
+  const [active, setActive] = React.useState("photo");
 
   const isMobile = React.useRef(
     (() => {
@@ -69,29 +71,58 @@ const IndexPage = () => {
     }
   };
 
+  const handleSwipeStart = (e) => {
+    const touchDown = e.touches[0].clientX;
+    setTouchPos(touchDown);
+  };
+
+  const handleSwipeMove = (e) => {
+    const getClass = e.target.className;
+    const touchDown = touchPos;
+    if (touchDown === null) {
+      return null;
+    }
+
+    const currentTouch = e.touches[0].clientX;
+    const diff = touchDown - currentTouch;
+    console.log(diff);
+
+    if (diff > 5) {
+      /photo/.test(getClass) && setActive("dev");
+    }
+
+    if (diff < -5) {
+      /dev/.test(getClass) && setActive("photo");
+    }
+
+    setTouchPos(null);
+  };
+
   return (
     <Layout>
       <Box
         sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
+          position: { xs: "static", md: "absolute" },
+          top: { xs: 0, md: "50%" },
+          left: { xs: 0, md: "50%" },
+          transform: { xs: "none", md: "translate(-50%, -50%)" },
           margin: "0 auto",
           backgroundColor: "#000",
           py: 3,
           px: 5,
           zIndex: "1201",
           whiteSpace: "nowrap",
+          width: "100%",
+          height: "fit-content",
         }}
         className="header"
         onMouseOver={(e) => handleHover(e)}
       >
         <Typography
-          variant={{ xs: "h2", md: "h1" }}
+          variant={isMobile.current ? "h2" : "h1"}
           component="h1"
+          fontFamily="Playfair Display, serif"
           className="header"
-          fontFamily={"Playfair Display, serif"}
         >
           Alexandru Gorgos
         </Typography>
@@ -99,8 +130,13 @@ const IndexPage = () => {
       <Grid
         container
         spacing={0}
-        sx={{ width: "100%", height: "100%" }}
-        flexDirection={{ xs: "column", md: "row" }}
+        sx={{
+          width: "100%",
+          height: "100%",
+          flexDirection: "column",
+        }}
+        onTouchStart={handleSwipeStart}
+        onTouchMove={handleSwipeMove}
       >
         <Grid
           item
@@ -110,8 +146,10 @@ const IndexPage = () => {
             position: "relative",
             borderRight: { md: "1px solid white" },
             overflow: "hidden",
-            flex: 1,
+            height: "100%",
+            transition: { xs: "transform 1s", md: "none" },
           }}
+          className={"photo " + (active === "photo" ? "active" : "inactive")}
         >
           <Link
             href="https://photo.alexandrugorgos.com"
@@ -139,9 +177,8 @@ const IndexPage = () => {
             >
               <Typography
                 fontFamily={"Poppins, sans-serif"}
-                letterSpacing={1.2}
                 className="photo"
-                variant="subtitle1"
+                variant={isMobile.current ? "body2" : "body1"}
               >
                 The photographer
               </Typography>
@@ -169,17 +206,15 @@ const IndexPage = () => {
             >
               <Typography
                 fontFamily={"Poppins, sans-serif"}
-                letterSpacing={1.2}
                 className="photo"
-                variant="subtitle1"
+                variant={isMobile.current ? "body2" : "body1"}
               >
                 Candid photography lover
               </Typography>
               <Typography
                 fontFamily={"Poppins, sans-serif"}
-                letterSpacing={1.2}
                 className="photo"
-                variant="subtitle1"
+                variant={isMobile.current ? "body2" : "body1"}
               >
                 Passionate world observer with a camera
               </Typography>
@@ -194,8 +229,10 @@ const IndexPage = () => {
             position: "relative",
             borderLeft: { md: "1px solid white" },
             overflow: "hidden",
-            flex: 1,
+            height: "100%",
+            transition: { xs: "transform 1s", md: "none" },
           }}
+          className={"dev " + (active === "dev" ? "active" : "inactive")}
         >
           <Link
             href="https://www.linkedin.com/in/alexandru-gorgos/"
@@ -224,8 +261,7 @@ const IndexPage = () => {
                 color="white"
                 className="dev"
                 fontFamily={"Source Code Pro, monospace"}
-                letterSpacing={1.2}
-                variant="subtitle1"
+                variant={isMobile.current ? "body2" : "body1"}
               >
                 The developer
               </Typography>
@@ -254,16 +290,14 @@ const IndexPage = () => {
               <Typography
                 className="dev"
                 fontFamily={"Source Code Pro, monospace"}
-                letterSpacing={1.2}
-                variant="subtitle1"
+                variant={isMobile.current ? "body2" : "body1"}
               >
                 JAMstack enthusiast
               </Typography>
               <Typography
                 className="dev"
                 fontFamily={"Source Code Pro, monospace"}
-                letterSpacing={1.2}
-                variant="subtitle1"
+                variant={isMobile.current ? "body2" : "body1"}
               >
                 Robust problem solver and idea generator
               </Typography>
