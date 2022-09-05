@@ -52,7 +52,10 @@ const IndexPage = () => {
       ];
 
       return toMatch.some((toMatchItem) => {
-        return navigator.userAgent.match(toMatchItem);
+        return (
+          typeof window !== `undefined` &&
+          navigator.userAgent.match(toMatchItem)
+        );
       });
     })()
   );
