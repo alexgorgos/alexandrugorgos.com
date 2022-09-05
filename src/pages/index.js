@@ -104,7 +104,7 @@ const IndexPage = () => {
       >
         {isMobile ? (
           <Typography
-            variant="h3"
+            variant="h1"
             component="h1"
             fontFamily="Playfair Display, serif"
             className="header"
