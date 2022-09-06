@@ -263,7 +263,7 @@ const IndexPage = () => {
               sx={{
                 display: { md: "none" },
                 position: "absolute",
-                bottom: "10%",
+                bottom: "20%",
                 left: "50%",
                 transform: "translate(-50%, 50%)",
                 color: "white",
@@ -277,7 +277,7 @@ const IndexPage = () => {
               <Box
                 sx={{
                   margin: "0 auto",
-                  p: 2,
+                  p: 1,
                   color: "white",
                   whiteSpace: "nowrap",
                   overflow: "hidden",
@@ -397,7 +397,7 @@ const IndexPage = () => {
               sx={{
                 display: { md: "none" },
                 position: "absolute",
-                bottom: "10%",
+                bottom: "20%",
                 left: "50%",
                 transform: "translate(-50%, 50%)",
                 color: "white",
@@ -411,7 +411,7 @@ const IndexPage = () => {
               <Box
                 sx={{
                   margin: "0 auto",
-                  p: 2,
+                  p: 1,
                   color: "white",
                   whiteSpace: "nowrap",
                   overflow: "hidden",
