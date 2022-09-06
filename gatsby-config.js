@@ -1,7 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: `Alexandru Gorgos`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `Alexandru Gorgos | Developer | Photographer`,
+    siteUrl: `https://alexandrugorgos.com`,
+    description: "Alexandru Gorgos personal website",
+    twitterUsername: `@alexandrugo_`,
+    image: `/6532770.jpeg`,
   },
   plugins: [
     `gatsby-theme-material-ui`,
@@ -9,6 +12,5 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-netlify`,
-    "react-device-detect",
   ],
 };

@@ -3,6 +3,7 @@ import { Layout } from "../components/Layout";
 import { StaticImage } from "gatsby-plugin-image";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Box, Link, Typography } from "@mui/material";
+import { Helmet } from "react-helmet";
 
 export const DevImage = () => {
   return (
@@ -36,7 +37,7 @@ export const PhotoImage = () => {
   );
 };
 
-const Homepage = () => {
+const IndexPage = () => {
   const [hovered, setHovered] = React.useState("");
   const [touchPos, setTouchPos] = React.useState(null);
   const [active, setActive] = React.useState("");
@@ -110,6 +111,25 @@ const Homepage = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <html lang="en" amp />
+        <meta charSet="utf-8" />
+        <title>Alexandru Gorgos | Developer | Photographer</title>
+        <link rel="canonical" href="https:/alexandrugorgos.com" />
+        <meta name="description" content="Alexandru Gorgos personal website" />
+        <meta
+          name="twitter:title"
+          content="Alexandru Gorgos | Developer | Photographer"
+        />
+        <meta name="twitter:url" content="https:/alexandrugorgos.com" />
+        <meta
+          name="twitter:description"
+          content="Alexandru Gorgos personal website"
+        />
+        <meta name="twitter:image" content="/6532770.jpeg" />
+        <meta name="twitter:creator" content="@alexandrugo_" />
+        <link rel="icon" href="/ico.jpg" />
+      </Helmet>
       <Box
         sx={{
           position: { xs: "static", md: "absolute" },
@@ -185,7 +205,8 @@ const Homepage = () => {
                   md: "translate(100%, 50%)",
                 },
                 backgroundColor: "#000",
-                p: 5,
+                py: { xs: 3, md: 5 },
+                px: { xs: 2, md: 5 },
                 my: 5,
                 color: "white",
                 transition: "transform 1s",
@@ -211,7 +232,8 @@ const Homepage = () => {
                   md: "translate(100%, 150%)",
                 },
                 backgroundColor: "#000",
-                p: 5,
+                py: { xs: 3, md: 5 },
+                px: { xs: 2, md: 5 },
                 my: 5,
                 color: "white",
                 whiteSpace: "nowrap",
@@ -235,6 +257,48 @@ const Homepage = () => {
                 variant="body2"
               >
                 Passionate world observer with a camera
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                display: { md: "none" },
+                position: "absolute",
+                bottom: "10%",
+                left: "50%",
+                transform: "translate(-50%, 50%)",
+                color: "white",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textAlign: "center",
+              }}
+              className="dev"
+              id="dev-button"
+            >
+              <Box
+                sx={{
+                  margin: "0 auto",
+                  p: 2,
+                  color: "white",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  display: "block",
+                }}
+                className="dev"
+              >
+                <Typography
+                  className="dev"
+                  fontFamily={"Source Code Pro, monospace"}
+                  variant="body2"
+                >
+                  Tap for Gallery
+                </Typography>
+              </Box>
+              <Typography
+                className="dev"
+                fontFamily={"Source Code Pro, monospace"}
+                variant="caption"
+              >
+                ...or swipe for more
               </Typography>
             </Box>
           </Link>
@@ -275,7 +339,8 @@ const Homepage = () => {
                   md: "translate(-100%, 50%)",
                 },
                 backgroundColor: "#000",
-                p: 5,
+                py: { xs: 3, md: 5 },
+                px: { xs: 2, md: 5 },
                 my: 5,
                 transition: "transform 1s",
               }}
@@ -301,7 +366,8 @@ const Homepage = () => {
                   md: "translate(-100%, 150%)",
                 },
                 backgroundColor: "#000",
-                p: 5,
+                py: { xs: 3, md: 5 },
+                px: { xs: 2, md: 5 },
                 my: 5,
                 color: "white",
                 whiteSpace: "nowrap",
@@ -327,6 +393,48 @@ const Homepage = () => {
                 Robust problem solver and idea generator
               </Typography>
             </Box>
+            <Box
+              sx={{
+                display: { md: "none" },
+                position: "absolute",
+                bottom: "10%",
+                left: "50%",
+                transform: "translate(-50%, 50%)",
+                color: "white",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textAlign: "center",
+              }}
+              className="dev"
+              id="dev-button"
+            >
+              <Box
+                sx={{
+                  margin: "0 auto",
+                  p: 2,
+                  color: "white",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  display: "block",
+                }}
+                className="dev"
+              >
+                <Typography
+                  className="dev"
+                  fontFamily={"Source Code Pro, monospace"}
+                  variant="body2"
+                >
+                  Tap for LinkedIn
+                </Typography>
+              </Box>
+              <Typography
+                className="dev"
+                fontFamily={"Source Code Pro, monospace"}
+                variant="caption"
+              >
+                ...or swipe for more
+              </Typography>
+            </Box>
           </Link>
         </Grid>
       </Grid>
@@ -334,4 +442,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default IndexPage;
