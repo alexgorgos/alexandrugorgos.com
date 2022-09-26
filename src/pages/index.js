@@ -75,9 +75,9 @@ const IndexPage = () => {
 
   React.useEffect(() => {
     if (isMobile.current && !active) {
-      setActive("photo");
+      setActive("dev");
     }
-  });
+  }, []);
 
   const handleSwipeStart = (e) => {
     if (isMobile.current) {
@@ -185,16 +185,16 @@ const IndexPage = () => {
             transition: { xs: "transform 1s", md: "none" },
           }}
           className={
-            "photo " +
-            (isMobile.current && (active === "photo" ? "active" : "inactive"))
+            "dev " +
+            (isMobile.current && (active === "dev" ? "active" : "inactive"))
           }
         >
           <Link
-            href="https://photo.alexandrugorgos.com"
-            className={hovered === "photo" ? "hovered" : ""}
+            href="https://www.linkedin.com/in/alexandru-gorgos/"
+            className={hovered === "dev" ? "hovered" : ""}
             onMouseOver={(e) => handleHover(e)}
           >
-            <PhotoImage />
+            <DevImage />
             <Box
               sx={{
                 position: "absolute",
@@ -209,139 +209,6 @@ const IndexPage = () => {
                 px: { xs: 2, md: 5 },
                 my: 5,
                 color: "white",
-                transition: "transform 1s",
-              }}
-              className="photo"
-              id="photo-title"
-            >
-              <Typography
-                fontFamily={"Poppins, sans-serif"}
-                className="photo"
-                variant="body2"
-              >
-                The photographer
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                position: "absolute",
-                top: "50%",
-                right: 0,
-                transform: {
-                  xs: "translate(100%, 0)",
-                  md: "translate(100%, 150%)",
-                },
-                backgroundColor: "#000",
-                py: { xs: 3, md: 5 },
-                px: { xs: 2, md: 5 },
-                my: 5,
-                color: "white",
-                whiteSpace: "nowrap",
-                textAlign: "right",
-                overflow: "hidden",
-                transition: "transform 1s",
-              }}
-              className="photo"
-              id="photo-info"
-            >
-              <Typography
-                fontFamily={"Poppins, sans-serif"}
-                className="photo"
-                variant="body2"
-              >
-                Candid photography lover
-              </Typography>
-              <Typography
-                fontFamily={"Poppins, sans-serif"}
-                className="photo"
-                variant="body2"
-              >
-                Passionate world observer with a camera
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: { md: "none" },
-                position: "absolute",
-                bottom: "20%",
-                left: "50%",
-                transform: "translate(-50%, 50%)",
-                color: "white",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textAlign: "center",
-              }}
-              className="dev"
-              id="dev-button"
-            >
-              <Box
-                sx={{
-                  margin: "0 auto",
-                  p: 1,
-                  color: "white",
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  display: "block",
-                }}
-                className="dev"
-              >
-                <Typography
-                  className="dev"
-                  fontFamily={"Source Code Pro, monospace"}
-                  variant="body2"
-                >
-                  Tap for Gallery
-                </Typography>
-              </Box>
-              <Typography
-                className="dev"
-                fontFamily={"Source Code Pro, monospace"}
-                variant="caption"
-              >
-                ...or swipe for more
-              </Typography>
-            </Box>
-          </Link>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{
-            position: "relative",
-            borderLeft: { md: "1px solid white" },
-            overflow: "hidden",
-            height: "100%",
-            transition: {
-              xs: "transform 1s",
-              md: "none",
-            },
-          }}
-          className={
-            "dev " +
-            (isMobile.current && (active === "dev" ? "active" : "inactive"))
-          }
-        >
-          <Link
-            href="https://www.linkedin.com/in/alexandru-gorgos/"
-            className={hovered === "dev" ? "hovered" : ""}
-            onMouseOver={(e) => handleHover(e)}
-          >
-            <DevImage />
-
-            <Box
-              sx={{
-                position: "absolute",
-                top: "50%",
-                left: 0,
-                transform: {
-                  xs: "translate(-100%, -150%)",
-                  md: "translate(-100%, 50%)",
-                },
-                backgroundColor: "#000",
-                py: { xs: 3, md: 5 },
-                px: { xs: 2, md: 5 },
-                my: 5,
                 transition: "transform 1s",
               }}
               className="dev"
@@ -360,10 +227,10 @@ const IndexPage = () => {
               sx={{
                 position: "absolute",
                 top: "50%",
-                left: 0,
+                right: 0,
                 transform: {
-                  xs: "translate(-100%, 0)",
-                  md: "translate(-100%, 150%)",
+                  xs: "translate(100%, 0)",
+                  md: "translate(100%, 150%)",
                 },
                 backgroundColor: "#000",
                 py: { xs: 3, md: 5 },
@@ -371,7 +238,7 @@ const IndexPage = () => {
                 my: 5,
                 color: "white",
                 whiteSpace: "nowrap",
-                textAlign: "left",
+                textAlign: "right",
                 overflow: "hidden",
                 transition: "transform 1s",
               }}
@@ -429,6 +296,140 @@ const IndexPage = () => {
               </Box>
               <Typography
                 className="dev"
+                fontFamily={"Source Code Pro, monospace"}
+                variant="caption"
+              >
+                ...or swipe for more
+              </Typography>
+            </Box>
+          </Link>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            position: "relative",
+            borderLeft: { md: "1px solid white" },
+            overflow: "hidden",
+            height: "100%",
+            transition: {
+              xs: "transform 1s",
+              md: "none",
+            },
+          }}
+          className={
+            "photo " +
+            (isMobile.current && (active === "photo" ? "active" : "inactive"))
+          }
+        >
+          <Link
+            href="https://photo.alexandrugorgos.com"
+            className={hovered === "photo" ? "hovered" : ""}
+            onMouseOver={(e) => handleHover(e)}
+          >
+            <PhotoImage />
+
+            <Box
+              sx={{
+                position: "absolute",
+                top: "50%",
+                left: 0,
+                transform: {
+                  xs: "translate(-100%, -150%)",
+                  md: "translate(-100%, 50%)",
+                },
+                backgroundColor: "#000",
+                py: { xs: 3, md: 5 },
+                px: { xs: 2, md: 5 },
+                my: 5,
+                transition: "transform 1s",
+              }}
+              className="photo"
+              id="photo-title"
+            >
+              <Typography
+                color="white"
+                fontFamily={"Poppins, sans-serif"}
+                className="photo"
+                variant="body2"
+              >
+                The photographer
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                position: "absolute",
+                top: "50%",
+                left: 0,
+                transform: {
+                  xs: "translate(-100%, 0)",
+                  md: "translate(-100%, 150%)",
+                },
+                backgroundColor: "#000",
+                py: { xs: 3, md: 5 },
+                px: { xs: 2, md: 5 },
+                my: 5,
+                color: "white",
+                whiteSpace: "nowrap",
+                textAlign: "left",
+                overflow: "hidden",
+                transition: "transform 1s",
+              }}
+              className="photo"
+              id="photo-info"
+            >
+              <Typography
+                fontFamily={"Poppins, sans-serif"}
+                className="photo"
+                variant="body2"
+              >
+                Candid photography lover
+              </Typography>
+              <Typography
+                fontFamily={"Poppins, sans-serif"}
+                className="photo"
+                variant="body2"
+              >
+                Passionate world observer with a camera
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                display: { md: "none" },
+                position: "absolute",
+                bottom: "20%",
+                left: "50%",
+                transform: "translate(-50%, 50%)",
+                color: "white",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textAlign: "center",
+              }}
+              className="photo"
+              id="photo-button"
+            >
+              <Box
+                sx={{
+                  margin: "0 auto",
+                  p: 1,
+                  color: "white",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  display: "block",
+                }}
+                className="photo"
+              >
+                <Typography
+                  className="photo"
+                  fontFamily={"Source Code Pro, monospace"}
+                  variant="body2"
+                >
+                  Tap for Gallery
+                </Typography>
+              </Box>
+              <Typography
+                className="photo"
                 fontFamily={"Source Code Pro, monospace"}
                 variant="caption"
               >
