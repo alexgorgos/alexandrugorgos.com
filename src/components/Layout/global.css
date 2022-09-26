@@ -47,13 +47,13 @@ h1.header {
   -moz-transition: filter 1s linear 1s;
 }
 
-.active.photo,
-.inactive.dev {
+.active.dev,
+.inactive.photo {
   transform: translate(0, 0);
 }
 
-.active.dev,
-.inactive.photo {
+.active.photo,
+.inactive.dev {
   transform: translate(-100%, 0);
 }
 

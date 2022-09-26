@@ -98,11 +98,11 @@ const IndexPage = () => {
       const diff = touchDown - currentTouch;
 
       if (diff > 5) {
-        /photo/.test(getClass) && setActive("dev");
+        /dev/.test(getClass) && setActive("photo");
       }
 
       if (diff < -5) {
-        /dev/.test(getClass) && setActive("photo");
+        /photo/.test(getClass) && setActive("dev");
       }
 
       setTouchPos(null);
