@@ -22,7 +22,7 @@
     "@fontsource/source-code-pro": "^4.5.12",
     "@mui/material": "^5.10.3",
     "gatsby": "^4.22.0",
-    "gatsby-plugin-google-analytics": "^4.22.0",
+    "gatsby-plugin-google-gtag": "^4.24.0",
     "gatsby-plugin-image": "^2.22.0",
     "gatsby-plugin-material-ui": "^4.1.0",
     "gatsby-plugin-netlify": "^5.0.1",
