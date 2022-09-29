@@ -116,7 +116,10 @@ const IndexPage = () => {
         <meta charSet="utf-8" />
         <title>Alexandru Gorgos | Developer | Photographer</title>
         <link rel="canonical" href="https:/alexandrugorgos.com" />
-        <meta name="description" content="Alexandru Gorgos personal website" />
+        <meta
+          name="description"
+          content="Alexandru Gorgos - web developer specialist at work, photographer in his spare time"
+        />
         <meta
           name="twitter:title"
           content="Alexandru Gorgos | Developer | Photographer"
