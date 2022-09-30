@@ -112,7 +112,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <Helmet>
-        <html lang="en" amp />
+        <html lang="en" />
         <meta charSet="utf-8" />
         <title>Alexandru Gorgos | Developer | Photographer</title>
         <link rel="canonical" href="https:/alexandrugorgos.com" />
