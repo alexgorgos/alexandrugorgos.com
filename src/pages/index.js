@@ -294,7 +294,7 @@ const IndexPage = () => {
                   fontFamily={"Source Code Pro, monospace"}
                   variant="body2"
                 >
-                  Tap for LinkedIn
+                  Tap for Portfolio
                 </Typography>
               </Box>
               <Typography
