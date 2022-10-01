@@ -114,7 +114,7 @@ const IndexPage = () => {
       <Helmet>
         <html lang="en" />
         <meta charSet="utf-8" />
-        <title>Alexandru Gorgos | Developer | Photographer</title>
+        <title>Alexandru Gorgos | Full-stack developer </title>
         <link rel="canonical" href="https:/alexandrugorgos.com" />
         <meta
           name="description"
@@ -193,7 +193,7 @@ const IndexPage = () => {
           }
         >
           <Link
-            href="https://www.linkedin.com/in/alexandru-gorgos/"
+            href="https://dev.alexandrugorgos.com"
             className={hovered === "dev" ? "hovered" : ""}
             onMouseOver={(e) => handleHover(e)}
           >
